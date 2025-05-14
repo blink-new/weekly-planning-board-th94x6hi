@@ -1,5 +1,5 @@
 import { Task } from '../types';
-import { initialTasksWithRecurring } from './initialData';
+import { generateInitialTasks } from './initialData';
 
 // Helper function to generate unique IDs
 export const generateId = (): string => {
@@ -14,7 +14,8 @@ export const saveTasks = (tasks: Task[]): void => {
 // Load tasks from local storage
 export const loadTasks = (): Task[] => {
   const savedTasks = localStorage.getItem('tasks');
-  return savedTasks ? JSON.parse(savedTasks) : initialTasksWithRecurring;
+  // Pass generateId to the data generation function
+  return savedTasks ? JSON.parse(savedTasks) : generateInitialTasks(generateId);
 };
 
 // Add a new task

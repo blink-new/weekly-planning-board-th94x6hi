@@ -1,3 +1,5 @@
+"use client"
+
 // Inspired by react-hot-toast library
 import { useState, useEffect, useCallback } from "react"
 
@@ -5,6 +7,14 @@ import type { ToastActionElement, ToastProps } from "../components/ui/toast"
 
 const TOAST_LIMIT = 5
 const TOAST_REMOVE_DELAY = 1000000
+
+// Move counter and ID generation to the top level before other declarations
+let count = 0
+
+function generateId() {
+  count = (count + 1) % Number.MAX_VALUE
+  return count.toString()
+}
 
 type ToasterToast = ToastProps & {
   id: string
@@ -19,13 +29,6 @@ const actionTypes = {
   DISMISS_TOAST: "DISMISS_TOAST",
   REMOVE_TOAST: "REMOVE_TOAST",
 } as const
-
-let count = 0
-
-function generateId() {
-  count = (count + 1) % Number.MAX_VALUE
-  return count.toString()
-}
 
 type ActionType = typeof actionTypes
 
