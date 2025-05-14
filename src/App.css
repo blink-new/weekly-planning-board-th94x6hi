@@ -1,0 +1,31 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter var', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Add some smooth transitions */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Fix the sidebar height */
+.sidebar {
+  height: calc(100vh - 57px);
+}
+
+/* Make day columns full height */
+.day-column {
+  height: calc(100vh - 130px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure task grid takes up full height in mobile view */
+@media (max-width: 1024px) {
+  .day-column {
+    height: auto;
+    min-height: 300px;
+  }
+}
